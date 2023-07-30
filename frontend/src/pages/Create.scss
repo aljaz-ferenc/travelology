@@ -1,0 +1,74 @@
+@import "../sass/mixins";
+@import "../sass/variables";
+
+.create {
+  width: 100%;
+  max-width: 60rem;
+  margin: 0 auto;
+  max-height: 100vh;
+  overflow-y: scroll;
+  padding: 0 1rem;
+  @include scrollbar;
+  button {
+    @include button(var(--color-secondary), var(--color-accent));
+    outline: 2px solid var(--color-accent);
+    font-size: 1.2rem;
+  }
+  input {
+    height: 2rem;
+    font-size: 1.2rem;
+  }
+  label {
+    font-size: 2rem;
+    font-family: "Staatliches", cursive;
+    font-weight: lighter;
+  }
+  textarea {
+    font-size: 1.2rem;
+  }
+  &__title,
+  &__description {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3rem;
+  }
+  .place-input {
+    margin-bottom: 3rem;
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    background-color: var(--color-secondary);
+    padding: 2rem;
+    border-radius: 5px;
+    &__inputs {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      & > div {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+    &__map {
+      width: 100%;
+    }
+  }
+
+  .leaflet-container {
+    width: 100%;
+    height: 100%;
+    cursor: crosshair;
+  }
+  .map-btn {
+    z-index: 500;
+    bottom: 0;
+    margin: 1rem;
+    position: absolute;
+  }
+  .form-btns {
+    display: flex;
+    gap: 1rem;
+  }
+}

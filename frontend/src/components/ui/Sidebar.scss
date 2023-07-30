@@ -1,0 +1,54 @@
+@import "../../sass/variables";
+
+.sidebar {
+  background-color: var(--color-secondary);
+  grid-column: 1;
+  grid-row: 1 / -1;
+  padding: 1rem;
+  &__links {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+    font-size: 1rem;
+    & a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      gap: 1rem;
+      width: 100%;
+      padding: 1.5rem 2rem;
+      cursor: pointer;
+      border-radius: 3px;
+      color: var(--color-text);
+      transition: all 0.2 s;
+      &:hover {
+        background-color: var(--color-primary);
+      }
+      & svg {
+        color: var(--color-icons);
+      }
+      &:hover svg {
+        color: var(--color-accent);
+        filter: brightness(1);
+      }
+      &.active {
+        background-color: var(--color-primary);
+        & svg {
+          filter: brightness(1);
+          color: var(--color-accent);
+        }
+      }
+    }
+  }
+  &__logo {
+    height: 10rem;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}

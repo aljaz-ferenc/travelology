@@ -1,0 +1,93 @@
+@import "../sass/mixins";
+
+.welcome {
+  height: 100vh;
+  background-size: cover;
+  background-position: right;
+  display: flex;
+  &__content {
+    width: 50%;
+    text-align: left;
+    position: relative;
+    text-align: center;
+    .text {
+      @include center-absolute;
+      h1 {
+        font-family: "Staatliches", cursive;
+        line-height: 1.5;
+        font-size: 5rem;
+        max-width: 50rem;
+        margin: 0 auto;
+        margin-bottom: 3rem;
+        span {
+          font-family: "Aclonica", sans-serif;
+          font-size: 6rem;
+        }
+      }
+      h2 {
+        font-family: "Galdeano", sans-serif;
+        font-size: 2rem;
+        max-width: 50rem;
+        margin: 0 auto;
+        line-height: 2;
+      }
+    }
+  }
+  &__form {
+    position: relative;
+    height: 100%;
+    width: 50%;
+    background-image: linear-gradient(
+        to right,
+        transparent,
+        rgba(0, 24, 53, 0.5) 50%
+      ),
+      url("../assets//welcome-bg.webp");
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+@media (max-width: 1440px) {
+  .welcome {
+    &__content {
+      .text {
+        h1 {
+          font-size: 2rem;
+          span {
+            font-size: 3rem;
+          }
+        }
+        h2 {
+          line-height: 1.5;
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .welcome {
+    background-image: linear-gradient(
+        to right,
+        transparent,
+        rgba(0, 24, 53, 0.5) 50%
+      ),
+      url("../assets//welcome-bg.webp");
+    flex-direction: column;
+    background-size: cover;
+    background-position: center;
+    &__form {
+      height: 100%;
+      width: 100%;
+      background-image: none;
+      backdrop-filter: blur(5px);
+    }
+    &__content {
+      height: 100%;
+      width: 100%;
+      backdrop-filter: blur(5px);
+    }
+  }
+}

@@ -1,0 +1,78 @@
+@import "../../sass/mixins";
+@import "../../sass/variables";
+
+.register-form {
+  @include form;
+  margin: 0 auto;
+  h2 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    font-weight: lighter;
+  }
+  label {
+    font-size: 1.5rem;
+  }
+  input {
+    font-size: 1.2rem;
+  }
+  button {
+    font-size: 1.5rem;
+    border: 2px solid rgb(67, 61, 223);
+    border-radius: 3px;
+  }
+  span {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 1440px) {
+  .register-form {
+    width: 100%;
+    h2 {
+      font-size: 1.5rem;
+    }
+    label {
+      font-size: 1.2rem;
+    }
+    input {
+      font-size: 1rem;
+    }
+    button {
+      font-size: 1.2rem;
+    }
+    span {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .register-form {
+    h2 {
+      font-size: 1.2rem;
+    }
+    label {
+      font-size: 1rem;
+    }
+    input {
+      font-size: 1rem;
+    }
+    button {
+      font-size: 1rem;
+    }
+    span {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .register-form {
+    backdrop-filter: none;
+    form {
+      gap: 1rem;
+      padding: 1rem !important;
+      border-radius: 3px;
+    }
+  }
+}

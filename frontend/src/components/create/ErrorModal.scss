@@ -1,0 +1,11 @@
+.error-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 2rem;
+  background-color: var(--color-error);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

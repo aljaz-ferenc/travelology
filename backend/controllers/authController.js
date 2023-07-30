@@ -1,0 +1,58 @@
+const User = require('../models/userModel')
+const jwt = require('jsonwebtoken')
+
+exports.login = async (req, res) => {
+    const { email, password } = req.body
+
+    try {
+        const user = await User.findOne({ email }).select('+password')
+
+        if (!user) throw new Error('This user does not exist')
+        if (!await user.checkPassword(password, user.password)) throw new Error('Password incorrect')
+
+        user.password = undefined
+
+        const token = jwt.sign({ user: user._id.toString() }, process.env.JWT_SECRET, {
+            expiresIn: '24h'
+        })
+
+        res.cookie('jwt', token, {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'None'
+        })
+
+        res.status(200).json({
+            status: 'success',
+            data: {
+                email: user.email,
+                id: user._id,
+                theme: user.theme
+            }
+        })
+
+    } catch (err) {
+        res.status(404).json({
+            status: 'fail',
+            message: err.message
+        })
+    }
+}
+
+exports.verify = async (req, res, next) => {
+    const token = req.cookies.jwt
+    try {
+        const user = jwt.verify(token, process.env.JWT_SECRET)
+        req.user = user
+        next()
+
+    } catch (err) {
+        res.clearCookie('jwt')
+        return res.redirect('/welcome')
+    }
+}
+
+exports.logout = async (req, res) => {
+    res.clearCookie('jwt')
+    res.end()
+}

@@ -1,0 +1,56 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+
+.single-log {
+  height: 100%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  @include scrollbar;
+  & h2 {
+    margin-bottom: 2rem;
+  }
+  &__close-btn {
+    @include button(var(--color-secondary), var(--color-accent));
+  }
+  .spot {
+    &__title {
+      margin-bottom: 0.5rem;
+      font-size: 2rem;
+    }
+    &__date {
+      margin-bottom: 1rem;
+    }
+    &__content {
+      font-size: 1.2rem;
+      line-height: 1.5;
+      margin-bottom: 2rem;
+    }
+  }
+  &__buttons {
+    margin-top: auto;
+    display: flex;
+    width: 100%;
+    button {
+      font-size: 1.2rem !important;
+      @include button(var(--color-primary), var(--color-accent));
+      outline: 2px solid var(--color-accent);
+    }
+    .btn-next {
+      margin-left: auto;
+    }
+  }
+  &__alt {
+    @include center-absolute;
+    filter: opacity(0.3);
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .single-log {
+    padding: 0.5rem !important;
+  }
+}

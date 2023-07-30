@@ -1,0 +1,19 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+
+.change-password {
+  margin: 1rem 0;
+  margin-bottom: 3rem;
+  width: 20rem;
+  button {
+    @include button(var(--color-primary), var(--color-accent));
+    text-transform: uppercase;
+  }
+  .submit-btn {
+    width: 100%;
+    .spinner {
+      margin: 0 auto;
+      width: fit-content;
+    }
+  }
+}

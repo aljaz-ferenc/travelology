@@ -1,0 +1,22 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+
+.delete-account {
+  margin: 1rem 0;
+  margin-bottom: 3rem;
+  width: 20rem;
+  button {
+    @include button(var(--color-primary), var(--color-accent));
+    text-transform: uppercase;
+  }
+  .error {
+    margin-bottom: 1rem;
+  }
+  .submit-btn {
+    width: 100%;
+    .spinner {
+      margin: 0 auto;
+      width: fit-content;
+    }
+  }
+}

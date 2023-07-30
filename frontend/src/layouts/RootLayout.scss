@@ -1,0 +1,25 @@
+@import "../sass/variables";
+@import "../sass/mixins";
+
+.root-layout {
+  display: grid;
+  padding: $--padding-section;
+  grid-template-columns: 15rem auto;
+  grid-template-rows: 4rem auto;
+  height: 100vh !important;
+  gap: $--padding-section;
+}
+
+@media (max-width: 1024px) {
+  .root-layout {
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(3, auto);
+  }
+}
+@media (max-width: 768px) {
+  .root-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+    padding: 0.5rem;
+  }
+}

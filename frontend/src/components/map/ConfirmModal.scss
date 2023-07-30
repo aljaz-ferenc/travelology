@@ -1,0 +1,42 @@
+@import "../../sass/mixins";
+
+.confirm-modal {
+  @include center-absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 501;
+  backdrop-filter: blur(5px);
+  &__content {
+    outline: 2px solid var(--color-accent);
+    border-radius: 5px;
+    background-color: var(--color-secondary);
+    width: 100%;
+    max-width: 40rem;
+    height: 50%;
+    max-height: 25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    justify-content: space-around;
+    padding: 2rem;
+    &--text {
+      font-size: 2rem;
+    }
+    @include center-absolute;
+    &--buttons {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      & button {
+        font-size: 1.2rem;
+        &:first-child {
+          @include button(var(--color-primary), green);
+        }
+        &:nth-child(2) {
+          @include button(var(--color-primary), red);
+        }
+      }
+    }
+  }
+}

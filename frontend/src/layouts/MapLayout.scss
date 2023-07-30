@@ -1,0 +1,32 @@
+@import "../sass/variables";
+@import "../sass/mixins";
+
+.map-layout {
+  display: grid;
+  grid-template-columns: 20rem auto;
+  grid-template-rows: repeat(2, calc((100% - $--padding-section) / 2));
+  gap: $--padding-section;
+  max-height: 100% !important;
+  height: 100%;
+  background-color: var(--color-primary);
+  & > section {
+    width: 100%;
+    background-color: var(--color-secondary);
+    border-radius: 5px;
+    padding: $--padding-section;
+    height: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .map-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+  }
+}
+
+@media (max-width: 768px) {
+  .map-layout {
+    gap: 0.5rem;
+  }
+}
