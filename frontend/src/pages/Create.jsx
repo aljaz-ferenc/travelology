@@ -11,7 +11,7 @@ import { createPortal } from "react-dom";
 import ErrorModal from "../components/create/ErrorModal";
 import markerIcon from '../assets/marker.png'
 import { icon } from "leaflet";
-// import { DevTool } from "@hookform/devtools";
+import { ClipLoader } from "react-spinners";
 
 const ICON = icon({
   iconUrl: markerIcon,
@@ -19,13 +19,13 @@ const ICON = icon({
 })
 
 export default function Create() {
-  // const user = useSelector((state) => state.user);
-  // const theme = useLoaderData();
   const { register, handleSubmit, control, formState: {errors} } = useForm();
   const [coordinates, setCoordinates] = useState([]);
   const [hasCoords, setHasCoords] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     const theme = localStorage.getItem("travelology-theme");
@@ -50,9 +50,16 @@ export default function Create() {
     data.startDate = startDate;
     data.endDate = endDate;
 
-    createTrip(data).then((res) => {
-      if (res.status === "success") navigate("/app/map");
-    });
+    setIsSubmitting(true)
+    createTrip(data)
+      .then((res) => {
+      if (res.status === "success") {
+        navigate("/app/map")
+      }else{
+        throw new Error(res.message)
+      }
+    }).catch(err => console.log(err.message))
+    .finally(() => setIsSubmitting(false))
   }
 
   const { fields, append, remove } = useFieldArray({
@@ -190,11 +197,18 @@ export default function Create() {
               >
                 Add a Place
               </button>
-              <button type="submit">Save</button>
+              <div className="submit-btn" style={{minWidth: '5rem', display: 'flex', justifyContent: 'center'}}>
+          {isSubmitting ? (
+            <div className="spinner">
+              <ClipLoader color="rgb(67, 61, 223)" />
+            </div>
+          ) : (
+            <button>Submit</button>
+          )}
+        </div>
             </div>
           </div>
         </div>
-        {/* <DevTool control={control} /> */}
       </form>
     </div>
   );

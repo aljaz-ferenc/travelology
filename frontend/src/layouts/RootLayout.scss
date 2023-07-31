@@ -19,7 +19,7 @@
 @media (max-width: 768px) {
   .root-layout {
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, auto);
+    grid-template-rows: repeat(3, min-content);
     padding: 0.5rem;
   }
 }

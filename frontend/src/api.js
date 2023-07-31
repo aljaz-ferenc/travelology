@@ -1,4 +1,5 @@
-const URL = import.meta.env.VITE_APP_URL 
+const URL = 'http://localhost:10000/api/v1'
+// const URL = import.meta.env.VITE_APP_URL 
 
 export async function registerUser(data) {
 
