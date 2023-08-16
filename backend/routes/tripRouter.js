@@ -8,7 +8,7 @@ router.route('/')
     .get(tripController.getAllTrips)
     .post(authController.verify, tripController.createTrip)
 
-router.route('/tripId')
+router.route('/:tripId')
     .get(tripController.getTrip)
     .patch(tripController.updateTrip)
 

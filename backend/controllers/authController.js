@@ -1,14 +1,15 @@
 const User = require('../models/userModel')
 const jwt = require('jsonwebtoken')
+const AppError = require('../utils/appError')
 
-exports.login = async (req, res) => {
+exports.login = async (req, res, next) => {
     const { email, password } = req.body
 
     try {
         const user = await User.findOne({ email }).select('+password')
 
-        if (!user) throw new Error('This user does not exist')
-        if (!await user.checkPassword(password, user.password)) throw new Error('Password incorrect')
+        if (!user) return next(new AppError('This user does not exist', 404))
+        if (!await user.checkPassword(password, user.password)) return next(new AppError('Password incorrect', 401))
 
         user.password = undefined
 
@@ -32,7 +33,7 @@ exports.login = async (req, res) => {
         })
 
     } catch (err) {
-        res.status(404).json({
+        res.status(500).json({
             status: 'fail',
             message: err.message
         })

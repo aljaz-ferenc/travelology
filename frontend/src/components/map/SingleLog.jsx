@@ -42,14 +42,20 @@ export default function SingleLog({ state, setState }) {
               <h2>
                 {log.title.toUpperCase()}
                 {log.startDate === log.endDate ? (
-                  <span> {`(${formatDate(log.startDate)})`}</span>
+                  <>
+                    <span> {`(${formatDate(log.startDate)})`}</span>
+                    <p className="log-description">{log.description}</p>
+                  </>
                 ) : (
-                  <span>
-                    {" "}
-                    {`(${formatDate(log.startDate)} - ${formatDate(
-                      log.endDate
-                    )})`}
-                  </span>
+                  <>
+                    <span>
+                      {" "}
+                      {`(${formatDate(log.startDate)} - ${formatDate(
+                        log.endDate
+                      )})`}
+                    </span>
+                    <p className="log-description">{log.description}</p>
+                  </>
                 )}
               </h2>
               {log.spots[state]?.title && (

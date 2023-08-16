@@ -12,6 +12,9 @@
   & h2 {
     margin-bottom: 2rem;
   }
+  .log-description{
+    margin-top: 1rem
+  }
   &__close-btn {
     @include button(var(--color-secondary), var(--color-accent));
   }

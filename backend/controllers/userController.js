@@ -1,6 +1,7 @@
 const User = require('../models/userModel')
 const Trip = require('../models/tripModel')
 const jwt = require('jsonwebtoken')
+const AppError = require('../utils/appError')
 
 exports.getAllUsers = async (req, res) => {
     try {
@@ -13,8 +14,8 @@ exports.getAllUsers = async (req, res) => {
         })
 
     } catch (err) {
-        res.status(404).json({
-            status: 'fail',
+        res.status(500).json({
+            status: 'error',
             message: err.message
         })
     }
@@ -48,8 +49,8 @@ exports.createUser = async (req, res) => {
 
 
     } catch (err) {
-        res.status(404).json({
-            status: 'fail',
+        res.status(500).json({
+            status: 'error',
             message: err.message
         })
     }
@@ -71,17 +72,19 @@ exports.deleteUser = async (req, res) => {
         })
 
     } catch (err) {
-        res.status(404).json({
-            status: 'fail',
+        res.status(500).json({
+            status: 'error',
             message: err.message
         })
     }
 }
 
-exports.getUser = async (req, res) => {
+exports.getUser = async (req, res, next) => {
     const userId = req.user.user
     try {
         const user = await User.findById(userId)
+        if(!user) return next(new AppError('User not found', 404))
+
         res.status(200).json({
             status: 'success',
             data: {
@@ -92,8 +95,8 @@ exports.getUser = async (req, res) => {
         })
 
     } catch (err) {
-        res.status(404).json({
-            status: 'fail',
+        res.status(500).json({
+            status: 'error',
             message: err.message
         })
     }

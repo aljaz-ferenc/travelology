@@ -1,4 +1,5 @@
 const Trip = require('../models/tripModel')
+const AppError = require('../utils/appError')
 
 exports.getAllTrips = async (req, res) => {
     try {
@@ -11,7 +12,7 @@ exports.getAllTrips = async (req, res) => {
         })
 
     } catch (err) {
-        res.status(404).json({
+        res.status(500).json({
             status: 'fail',
             message: err.message
         })
@@ -35,16 +36,17 @@ exports.createTrip = async (req, res) => {
         })
 
     } catch (err) {
-        res.status(404).json({
+        res.status(500).json({
             status: 'fail',
             message: err.message
         })
     }
 }
 
-exports.getTrip = async (req, res) => {
+exports.getTrip = async (req, res, next) => {
     try {
         const trip = await Trip.findById(req.params.tripId)
+        if(!trip) return next(new AppError('Trip not found', 404))
 
         res.status(200).json({
             status: 'success',
@@ -52,17 +54,18 @@ exports.getTrip = async (req, res) => {
         })
     }
     catch (err) {
-        res.status(404).json({
+        res.status(500).json({
             status: 'fail',
             message: err.message
         })
     }
 }
 
-exports.deleteTrip = async (req, res) => {
+exports.deleteTrip = async (req, res, next) => {
     const id = req.params.tripId
     try {
         const trip = await Trip.findByIdAndDelete(id)
+        if(!trip) return next(new AppError('Trip not found', 404))
 
         res.status(200).json({
             status: 'success',
@@ -70,17 +73,18 @@ exports.deleteTrip = async (req, res) => {
         })
 
     } catch (err) {
-        res.status(404).json({
-            status: 'fail',
+        res.status(500).json({
+            status: 'error',
             message: err.message
         })
     }
 }
 
-exports.updateTrip = async (req, res) => {
+exports.updateTrip = async (req, res, next) => {
     try {
         const trip = await Trip.findByIdAndUpdate(req.body.id, { title: req.body.title }, { new: true })
-        console.log(req.body.title)
+
+        if(!trip) return next(new AppError('Trip not found', 404))
 
         res.status(200).json({
             status: 'success',
@@ -88,8 +92,8 @@ exports.updateTrip = async (req, res) => {
         })
 
     } catch (err) {
-        res.status(404).json({
-            status: 'fail',
+        res.status(500).json({
+            status: 'error',
             message: err.message
         })
     }
