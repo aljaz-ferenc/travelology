@@ -23,6 +23,7 @@ export default function Create() {
   const [coordinates, setCoordinates] = useState([]);
   const [hasCoords, setHasCoords] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const mapProvider = useSelector((state) => state.user.mapProvider);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -180,7 +181,7 @@ export default function Create() {
                     <div className="place-input__map">
                       <MapContainer center={[45, 45]} zoom={3}>
                         <MapControl index={index} />
-                        <TileLayer url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"></TileLayer>
+                        <TileLayer url={mapProvider}></TileLayer>
                         {coordinates[index] && (
                           <Marker icon={ICON} key={index} position={coordinates[index]} />
                         )}
