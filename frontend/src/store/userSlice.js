@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     email: '',
-    mapProvider: 'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png',
+    // mapProvider: 'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png',
+    mapProvider: 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
     theme: null
 }
 

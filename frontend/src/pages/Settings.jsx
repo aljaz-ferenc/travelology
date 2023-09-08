@@ -12,18 +12,18 @@ import ChangePassForm from "../components/settings/ChangePassForm";
 import DeleteAccForm from "../components/settings/DeleteAccForm";
 
 const maps = [
-  {
-    image: map1,
-    provider:
-      "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png",
-    name: "Smooth Dark",
-  },
-  {
-    image: map2,
-    provider:
-      "https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png",
-    name: "Smooth",
-  },
+  // {
+  //   image: map1,
+  //   provider:
+  //     "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png",
+  //   name: "Smooth Dark",
+  // },
+  // {
+  //   image: map2,
+  //   provider:
+  //     "https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png",
+  //   name: "Smooth",
+  // },
   {
     image: map3,
     provider:
