@@ -10,8 +10,6 @@ Travelology is the perfect companion app for avid travelers, allowing them to ca
 ### Account Management and Authentication
 Travelology provides users with the ability to create, update, and delete accounts, manage passwords, and choose from various map providers, along with options for light and dark themes.
 
-![Settings](./readme-images/settings.png)
-
 ### Create Trips
 In the Create section, users can create new trips and add multiple locations they've visited during their journeys. Each location encompasses a description, date, and can be precisely pinpointed on the map.
 
