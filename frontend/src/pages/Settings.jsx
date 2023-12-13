@@ -27,7 +27,7 @@ const maps = [
   {
     image: map3,
     provider:
-      "https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.png",
+    'https://tiles.stadiamaps.com/tiles/stamen_toner/{z}/{x}/{y}{r}.png',
     name: "Toner",
   },
   {
